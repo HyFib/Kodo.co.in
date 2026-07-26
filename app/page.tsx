@@ -9,7 +9,7 @@ const dishes = [
     kicker: "01 · SMILES BETWEEN BUNS",
     description:
       "A gloriously stacked millet-bun burger with a crisp veg patty, gooey cheese and our sunshine sauce.",
-    image: "/food/millet-burger.png",
+    image: "/food/millet-burger.jpg",
     alt: "A millet-bun burger stacked with vegetables, cheese and a crisp patty",
     tags: ["Millet bun", "Big crunch", "Saucy"],
   },
@@ -18,7 +18,7 @@ const dishes = [
     kicker: "02 · LITTLE POCKETS OF JOY",
     description:
       "Golden millet momos, pan-seared for the good kind of crunch and made for a bright chutney dunk.",
-    image: "/food/millet-momos.png",
+    image: "/food/millet-momos.jpg",
     alt: "Golden pan-seared millet momos with tomato chilli chutney",
     tags: ["Pan-seared", "Chutney dip", "Shareable"],
   },
@@ -27,7 +27,7 @@ const dishes = [
     kicker: "03 · ROLL WITH THE GOOD STUFF",
     description:
       "A toasted millet flatbread loaded with paneer, charred corn, crisp veg and creamy green chutney.",
-    image: "/food/millet-wraps.png",
+    image: "/food/millet-wraps.jpg",
     alt: "Toasted millet wraps filled with paneer and colourful vegetables",
     tags: ["Millet wrap", "Paneer", "Fresh crunch"],
   },
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="hero-visual-wrap">
             <div className="hero-visual">
               <Image
-                src="/food/millet-burger.png"
+                src="/food/millet-burger.jpg"
                 alt="A craveable Kodo millet burger"
                 fill
                 priority
