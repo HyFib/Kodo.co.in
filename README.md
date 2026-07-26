@@ -25,6 +25,7 @@ The local server prints the preview URL when it starts.
 - Full-screen KODO hero and branded navigation
 - Scroll-controlled burger assembly with eight photorealistic ingredient layers
 - Scroll-reactive dish showcase for the burger, momos, and wraps
+- Dedicated price-free 3D menu page with a configuration-ready Swiggy link
 - Responsive mobile layouts and reduced-motion support
 - KODO English and Tamil identity lockups
 - Cloudflare-compatible Vinext production output

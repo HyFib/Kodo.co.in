@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -66,4 +66,35 @@ test("keeps KODO motion accessible and the starter removed", async () => {
     `${page}\n${layout}\n${packageJson}`,
     /codex-preview|_sites-preview|react-loading-skeleton/i,
   );
+});
+
+test("includes a dedicated price-free menu experience", async () => {
+  const [menuPage, menuData, menuCss] = await Promise.all([
+    readFile(new URL("../app/menu/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/menu/menu-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/menu/menu.css", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(menuPage, /KODO Menu — The Millet Way/);
+  assert.match(menuPage, /NEXT_PUBLIC_SWIGGY_ORDER_URL/);
+  assert.match(menuPage, /Swiggy link coming soon/);
+  assert.match(menuData, /Steamed Chicken Burger/);
+  assert.match(menuData, /Veg Momos Steamed/);
+  assert.match(menuData, /Ragi Hot Chocolate/);
+  assert.doesNotMatch(`${menuPage}\n${menuData}`, /₹|\bprice\b/i);
+  assert.match(menuCss, /perspective:\s*1600px/);
+  assert.match(menuCss, /@media \(max-width:\s*760px\)/);
+});
+
+test("server-renders the dedicated menu route", async () => {
+  const response = await render("/menu");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /Pick your/);
+  assert.match(html, /Kodo Crust Pizza/);
+  assert.match(html, /Soft Momo-ments/);
+  assert.match(html, /Swiggy link coming soon/);
+  assert.doesNotMatch(html, /₹/);
 });

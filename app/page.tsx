@@ -185,7 +185,7 @@ export default function Home() {
           />
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
-          <a href="#menu">The good stuff</a>
+          <a href="/menu">Full menu</a>
           <a href="#millet-way">The millet way</a>
         </nav>
         <a className="nav-cta" href="#visit">
@@ -211,9 +211,9 @@ export default function Home() {
               lot of joy.
             </p>
             <div className="hero-actions">
-              <a className="button button-dark" href="#menu">
-                Scroll for a bite
-                <span aria-hidden="true">↓</span>
+              <a className="button button-dark" href="/menu">
+                See the full menu
+                <span aria-hidden="true">↗</span>
               </a>
               <span className="tiny-note">0% Guilt · 100% Smiles</span>
             </div>
