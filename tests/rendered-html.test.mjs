@@ -34,6 +34,8 @@ test("server-renders the KODO experience", async () => {
   assert.match(html, /smiles back\./);
   assert.match(html, /Meet the/);
   assert.match(html, /mood food\./);
+  assert.match(html, /SCROLL TO STACK/);
+  assert.match(html, /built bite by bite\./);
   assert.match(html, /The Grainfather/);
   assert.match(html, /Smiling Momo-ments/);
   assert.match(html, /Smilin’ Wraps/);
@@ -50,7 +52,13 @@ test("keeps KODO motion accessible and the starter removed", async () => {
 
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /--scroll-progress/);
+  assert.match(css, /\.burger-build[\s\S]*height:\s*470svh/);
+  assert.match(css, /\.burger-build-sticky[\s\S]*position:\s*sticky/);
+  assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(page, /IntersectionObserver/);
+  assert.match(page, /requestAnimationFrame/);
+  assert.match(page, /data-burger-layer/);
+  assert.match(page, /burger-layers\/\$\{layer\.slug\}\.png/);
   assert.match(page, /aria-label="Primary navigation"/);
   assert.match(page, /millet-burger\.jpg/);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);

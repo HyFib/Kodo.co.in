@@ -343,6 +343,192 @@ p {
   font-style: normal;
 }
 
+.burger-build {
+  --burger-progress: 0;
+  position: relative;
+  height: 470svh;
+  background:
+    radial-gradient(circle at 70% 48%, rgb(255 241 77 / 0.14), transparent 34%),
+    var(--deep-green);
+  color: var(--yellow);
+}
+
+.burger-build-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(520px, 1.22fr);
+  gap: clamp(28px, 5vw, 88px);
+  align-items: center;
+  height: 100svh;
+  min-height: 640px;
+  padding: 78px clamp(22px, 5vw, 80px) 34px;
+  overflow: hidden;
+}
+
+.burger-build-copy {
+  position: relative;
+  z-index: 12;
+  max-width: 620px;
+}
+
+.burger-build-copy h2 {
+  margin: 0;
+  font-size: clamp(3.8rem, 6.8vw, 7.8rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.82;
+}
+
+.burger-build-copy h2 span {
+  display: block;
+  color: var(--cream);
+}
+
+.burger-build-intro {
+  max-width: 520px;
+  margin: 30px 0 26px;
+  color: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.96rem, 1.35vw, 1.16rem);
+  line-height: 1.5;
+}
+
+.burger-build-progress {
+  width: min(100%, 430px);
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(251 247 232 / 0.22);
+}
+
+.burger-build-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--orange);
+  transform: scaleX(var(--burger-progress));
+  transform-origin: left;
+}
+
+.burger-build-note {
+  margin: 12px 0 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.burger-assembly-wrap {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 760px);
+}
+
+.burger-assembly {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  isolation: isolate;
+}
+
+.burger-layer {
+  position: absolute;
+  z-index: var(--layer-z);
+  left: 50%;
+  width: var(--layer-width);
+  height: var(--layer-height);
+  opacity: 0;
+  filter: drop-shadow(0 16px 14px rgb(0 22 12 / 0.2));
+  transform: translate3d(-50%, var(--drop-y, -460px), 0)
+    rotate(var(--tilt, 7deg));
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.burger-layer img {
+  object-fit: contain;
+}
+
+.burger-layer-top-bun {
+  --layer-z: 9;
+  --layer-width: 84%;
+  --layer-height: 23%;
+  top: 11%;
+}
+
+.burger-layer-lettuce {
+  --layer-z: 8;
+  --layer-width: 91%;
+  --layer-height: 18%;
+  top: 29%;
+}
+
+.burger-layer-tomato {
+  --layer-z: 7;
+  --layer-width: 84%;
+  --layer-height: 11%;
+  top: 42%;
+}
+
+.burger-layer-onion {
+  --layer-z: 6;
+  --layer-width: 84%;
+  --layer-height: 11%;
+  top: 49%;
+}
+
+.burger-layer-cheese {
+  --layer-z: 5;
+  --layer-width: 87%;
+  --layer-height: 12%;
+  top: 56%;
+}
+
+.burger-layer-patty {
+  --layer-z: 4;
+  --layer-width: 89%;
+  --layer-height: 17%;
+  top: 63%;
+}
+
+.burger-layer-sauce {
+  --layer-z: 3;
+  --layer-width: 84%;
+  --layer-height: 12%;
+  top: 76%;
+}
+
+.burger-layer-bottom-bun {
+  --layer-z: 2;
+  --layer-width: 86%;
+  --layer-height: 19%;
+  top: 83%;
+}
+
+.burger-shadow {
+  position: absolute;
+  z-index: 1;
+  bottom: -1%;
+  left: 50%;
+  width: 66%;
+  height: 5%;
+  border-radius: 50%;
+  background: rgb(0 20 10 / 0.48);
+  filter: blur(14px);
+  opacity: calc(var(--burger-progress) * 0.8);
+  transform: translateX(-50%) scaleX(calc(0.65 + var(--burger-progress) * 0.35));
+}
+
+.burger-stage-label {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: rgb(255 241 77 / 0.58);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+}
+
 .menu-intro {
   display: grid;
   grid-template-columns: 0.7fr 1.4fr 0.8fr;
@@ -732,6 +918,20 @@ footer > a:last-child {
     inset: 0 0 6%;
   }
 
+  .burger-build {
+    height: 430svh;
+  }
+
+  .burger-build-sticky {
+    grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+    gap: 18px;
+    padding-inline: 32px;
+  }
+
+  .burger-build-copy h2 {
+    font-size: clamp(3.6rem, 7.2vw, 6rem);
+  }
+
   .menu-intro {
     grid-template-columns: 1fr;
     min-height: 74svh;
@@ -802,6 +1002,61 @@ footer > a:last-child {
 
   .hero-caption {
     display: none;
+  }
+
+  .burger-build {
+    height: 400svh;
+  }
+
+  .burger-build-sticky {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 0;
+    align-items: start;
+    min-height: 560px;
+    padding: max(70px, 8svh) 14px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .burger-build-copy {
+    max-width: 620px;
+    padding-inline: 4px;
+  }
+
+  .burger-build-copy .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .burger-build-copy h2 {
+    font-size: clamp(2.75rem, 13vw, 4.8rem);
+    line-height: 0.84;
+  }
+
+  .burger-build-intro {
+    max-width: 470px;
+    margin: 14px 0 13px;
+    font-size: clamp(0.82rem, 3.5vw, 1rem);
+    line-height: 1.4;
+  }
+
+  .burger-build-note {
+    margin-top: 8px;
+    font-size: 0.58rem;
+  }
+
+  .burger-assembly-wrap {
+    align-self: end;
+    width: min(100%, 560px);
+    margin-inline: auto;
+  }
+
+  .burger-assembly {
+    aspect-ratio: 1 / 0.98;
+  }
+
+  .burger-stage-label {
+    margin-top: 2px;
+    padding-inline: 8px;
+    font-size: 0.52rem;
   }
 
   .menu-intro {
@@ -909,5 +1164,15 @@ footer > a:last-child {
 
   .hero-visual-wrap {
     transform: none;
+  }
+
+  .burger-layer {
+    opacity: 1 !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    will-change: auto;
+  }
+
+  .burger-build-progress span {
+    transform: scaleX(1);
   }
 }

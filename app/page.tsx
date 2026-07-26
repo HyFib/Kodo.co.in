@@ -1,7 +1,50 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const burgerLayers = [
+  {
+    name: "Top sesame bun",
+    slug: "top-bun",
+    order: 7,
+  },
+  {
+    name: "Crisp lettuce",
+    slug: "lettuce",
+    order: 6,
+  },
+  {
+    name: "Fresh tomato",
+    slug: "tomato",
+    order: 5,
+  },
+  {
+    name: "Red onion",
+    slug: "onion",
+    order: 4,
+  },
+  {
+    name: "Melted cheese",
+    slug: "cheese",
+    order: 3,
+  },
+  {
+    name: "Millet vegetable patty",
+    slug: "patty",
+    order: 2,
+  },
+  {
+    name: "Sunshine sauce",
+    slug: "sauce",
+    order: 1,
+  },
+  {
+    name: "Toasted bottom bun",
+    slug: "bottom-bun",
+    order: 0,
+  },
+] as const;
 
 const dishes = [
   {
@@ -35,8 +78,11 @@ const dishes = [
 
 export default function Home() {
   const [activeDish, setActiveDish] = useState(0);
+  const burgerBuildRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    let animationFrame = 0;
+
     const updateScrollEffects = () => {
       const pageHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -49,6 +95,51 @@ export default function Home() {
         "--hero-shift",
         `${Math.min(window.scrollY * 0.1, 72)}px`,
       );
+
+      const burgerBuild = burgerBuildRef.current;
+      if (burgerBuild) {
+        const bounds = burgerBuild.getBoundingClientRect();
+        const scrollDistance = burgerBuild.offsetHeight - window.innerHeight;
+        const burgerProgress =
+          scrollDistance > 0
+            ? Math.min(1, Math.max(0, -bounds.top / scrollDistance))
+            : 1;
+
+        burgerBuild.style.setProperty(
+          "--burger-progress",
+          burgerProgress.toString(),
+        );
+
+        burgerBuild
+          .querySelectorAll<HTMLElement>("[data-burger-layer]")
+          .forEach((layer) => {
+            const order = Number(layer.dataset.order ?? 0);
+            const start = 0.035 + order * 0.105;
+            const localProgress = Math.min(
+              1,
+              Math.max(0, (burgerProgress - start) / 0.16),
+            );
+            const eased = 1 - Math.pow(1 - localProgress, 3);
+            const bounce =
+              localProgress > 0.78
+                ? -Math.sin(((localProgress - 0.78) / 0.22) * Math.PI) * 10
+                : 0;
+            const drop = -(1 - eased) * (280 + order * 42) + bounce;
+            const tilt = (1 - eased) * (order % 2 === 0 ? -7 : 7);
+
+            layer.style.setProperty("--drop-y", `${drop}px`);
+            layer.style.setProperty("--tilt", `${tilt}deg`);
+            layer.style.opacity = localProgress > 0.015 ? "1" : "0";
+          });
+      }
+    };
+
+    const requestScrollUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        updateScrollEffects();
+      });
     };
 
     const observer = new IntersectionObserver(
@@ -67,12 +158,15 @@ export default function Home() {
 
     const steps = document.querySelectorAll<HTMLElement>("[data-dish-index]");
     steps.forEach((step) => observer.observe(step));
-    window.addEventListener("scroll", updateScrollEffects, { passive: true });
+    window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+    window.addEventListener("resize", requestScrollUpdate);
     updateScrollEffects();
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", updateScrollEffects);
+      window.removeEventListener("scroll", requestScrollUpdate);
+      window.removeEventListener("resize", requestScrollUpdate);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
     };
   }, []);
 
@@ -156,6 +250,61 @@ export default function Home() {
             <span>SMILES</span><i>☺</i><span>THE MILLET WAY</span><i>☺</i>
           </div>
         </div>
+
+        <section
+          className="burger-build"
+          ref={burgerBuildRef}
+          aria-labelledby="burger-build-title"
+        >
+          <div className="burger-build-sticky">
+            <div className="burger-build-copy">
+              <p className="eyebrow">SCROLL TO STACK</p>
+              <h2 id="burger-build-title">
+                A better burger,
+                <span>built bite by bite.</span>
+              </h2>
+              <p className="burger-build-intro">
+                Keep scrolling. Every layer drops into place until the whole
+                millet-powered smile is ready to pick up.
+              </p>
+              <div className="burger-build-progress" aria-hidden="true">
+                <span />
+              </div>
+              <p className="burger-build-note">08 layers · one happy ending</p>
+            </div>
+
+            <div className="burger-assembly-wrap">
+              <div
+                className="burger-assembly"
+                role="img"
+                aria-label="A millet burger assembling layer by layer as the page scrolls"
+              >
+                <div className="burger-shadow" aria-hidden="true" />
+                {burgerLayers.map((layer) => (
+                  <div
+                    className={`burger-layer burger-layer-${layer.slug}`}
+                    data-burger-layer
+                    data-order={layer.order}
+                    key={layer.slug}
+                    aria-hidden="true"
+                  >
+                    <Image
+                      src={`/burger-layers/${layer.slug}.png`}
+                      alt=""
+                      fill
+                      sizes="(max-width: 760px) 94vw, (max-width: 1100px) 60vw, 48vw"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="burger-stage-label" aria-hidden="true">
+                <span>DROP</span>
+                <span>STACK</span>
+                <span>SMILE</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="menu-intro" id="menu">
           <p className="eyebrow">HUNGRY YET?</p>
