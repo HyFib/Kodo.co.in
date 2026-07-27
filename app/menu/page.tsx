@@ -68,7 +68,17 @@ export default function MenuPage() {
                 unoptimized
                 sizes="(max-width: 760px) 88vw, 48vw"
               />
-              <span className="menu-hero-stamp">MILLET MADE ☺</span>
+              <span className="menu-hero-stamp">
+                <Image
+                  className="menu-hero-smiley"
+                  src="/brand/kodo-smiley-display.png"
+                  alt=""
+                  width={360}
+                  height={360}
+                  unoptimized
+                />
+                <span>MILLET MADE</span>
+              </span>
             </div>
             <div className="menu-hero-shadow" />
           </div>

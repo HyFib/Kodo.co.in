@@ -23,16 +23,29 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
   background: var(--deep-green);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
+  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--cream);
   color: var(--ink);
   font-family:
     "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 a {
@@ -45,7 +58,9 @@ img {
 }
 
 .site-shell {
-  min-width: 320px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .scroll-progress {
@@ -97,12 +112,6 @@ img {
 .nav-links a,
 .nav-cta {
   transition: opacity 180ms ease;
-}
-
-.nav-links a:hover,
-.nav-cta:hover,
-footer a:hover {
-  opacity: 0.66;
 }
 
 .nav-cta {
@@ -208,10 +217,6 @@ p {
 .button-dark {
   background: var(--ink);
   color: var(--yellow);
-}
-
-.button:hover {
-  transform: translateY(-3px) rotate(-1deg);
 }
 
 .tiny-note {
@@ -801,7 +806,9 @@ p {
 
 .text-link {
   display: inline-flex;
+  align-items: center;
   gap: 18px;
+  min-height: 44px;
   padding-bottom: 6px;
   border-bottom: 2px solid currentColor;
   color: var(--green);
@@ -872,6 +879,18 @@ footer p {
 
 footer > a:last-child {
   justify-self: end;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover,
+  .nav-cta:hover,
+  footer a:hover {
+    opacity: 0.66;
+  }
+
+  .button:hover {
+    transform: translateY(-3px) rotate(-1deg);
+  }
 }
 
 @keyframes sticker-bob {
@@ -957,7 +976,10 @@ footer > a:last-child {
 @media (max-width: 760px) {
   .topbar {
     min-height: 76px;
-    padding-inline: 18px;
+    padding:
+      max(14px, env(safe-area-inset-top))
+      max(18px, env(safe-area-inset-right)) 14px
+      max(18px, env(safe-area-inset-left));
   }
 
   .brand {
@@ -965,12 +987,16 @@ footer > a:last-child {
   }
 
   .nav-cta {
+    min-height: 44px;
     padding: 9px 12px;
     font-size: 0.64rem;
   }
 
   .hero {
-    padding: 120px 18px 30px;
+    padding:
+      max(120px, calc(92px + env(safe-area-inset-top)))
+      max(18px, env(safe-area-inset-right)) 30px
+      max(18px, env(safe-area-inset-left));
   }
 
   .hero h1,
@@ -1151,10 +1177,20 @@ footer > a:last-child {
 
   footer {
     grid-template-columns: 1fr auto;
+    padding:
+      28px max(18px, env(safe-area-inset-right))
+      max(28px, env(safe-area-inset-bottom))
+      max(18px, env(safe-area-inset-left));
   }
 
   footer p {
     display: none;
+  }
+
+  footer > a:last-child {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 

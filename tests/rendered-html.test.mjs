@@ -55,6 +55,8 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   assert.match(css, /\.burger-build[\s\S]*height:\s*470svh/);
   assert.match(css, /\.burger-build-sticky[\s\S]*position:\s*sticky/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
+  assert.match(css, /touch-action:\s*manipulation/);
+  assert.match(css, /safe-area-inset-top/);
   assert.match(page, /IntersectionObserver/);
   assert.match(page, /requestAnimationFrame/);
   assert.match(page, /data-burger-layer/);
@@ -62,6 +64,7 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   assert.match(page, /aria-label="Primary navigation"/);
   assert.match(page, /millet-burger\.jpg/);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);
+  assert.match(layout, /viewportFit:\s*"cover"/);
   assert.doesNotMatch(
     `${page}\n${layout}\n${packageJson}`,
     /codex-preview|_sites-preview|react-loading-skeleton/i,
@@ -83,7 +86,11 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuData, /Ragi Hot Chocolate/);
   assert.doesNotMatch(`${menuPage}\n${menuData}`, /₹|\bprice\b/i);
   assert.match(menuCss, /perspective:\s*1600px/);
+  assert.match(menuCss, /\.menu-card\s*\{[\s\S]*min-width:\s*0/);
   assert.match(menuCss, /@media \(max-width:\s*760px\)/);
+  assert.match(menuCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+  assert.match(menuCss, /\.category-rail a[\s\S]*min-height:\s*44px/);
+  assert.match(menuCss, /safe-area-inset-bottom/);
 });
 
 test("server-renders the dedicated menu route", async () => {
