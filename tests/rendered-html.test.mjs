@@ -104,6 +104,11 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.doesNotMatch(`${menuPage}\n${menuData}`, /₹|\bprice\b/i);
   assert.match(menuCss, /perspective:\s*1600px/);
   assert.match(menuCss, /\.menu-card\s*\{[\s\S]*min-width:\s*0/);
+  assert.match(
+    menuCss,
+    /\.menu-card-image\s*\{[\s\S]*margin:\s*30px 0 34px/,
+  );
+  assert.doesNotMatch(menuCss, /translateZ\(48px\)/);
   assert.match(menuCss, /@media \(max-width:\s*760px\)/);
   assert.match(menuCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)/);
   assert.match(menuCss, /\.category-rail a[\s\S]*min-height:\s*44px/);
