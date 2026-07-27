@@ -231,7 +231,14 @@ export default function Home() {
                 sizes="(max-width: 760px) 92vw, 52vw"
               />
               <div className="hero-sticker" aria-hidden="true">
-                <span className="sticker-eyes">••</span>
+                <Image
+                  className="hero-smiley-logo"
+                  src="/brand/kodo-smiley-display.png"
+                  alt=""
+                  width={360}
+                  height={360}
+                  unoptimized
+                />
                 <span>Made to smile</span>
               </div>
             </div>
