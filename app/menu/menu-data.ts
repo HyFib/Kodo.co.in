@@ -46,6 +46,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Kodo Crust Pizza",
     kicker: "Millet-powered slices",
     tone: "green",
+    image: {
+      src: "/menu-assets/kodo-crust-pizza.webp",
+      alt: "A Kodo millet-crust vegetable pizza with a lifted cheesy slice",
+    },
     items: [
       veg("Multigrain Pizza"),
       veg("Moringa Pizza"),
@@ -64,8 +68,8 @@ export const menuCategories: MenuCategory[] = [
     kicker: "Toasted, stacked, sorted",
     tone: "cream",
     image: {
-      src: "/food/millet-wraps.jpg",
-      alt: "Toasted millet flatbread filled with vegetables",
+      src: "/menu-assets/multi-millet-sandwich.webp",
+      alt: "A stack of toasted multi-millet vegetable and cheese sandwiches",
     },
     items: [
       veg("Grilled Cheese Sandwich"),
@@ -79,6 +83,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Guilt-Free Munchies",
     kicker: "Crunch first, questions later",
     tone: "orange",
+    image: {
+      src: "/menu-assets/guilt-free-munchies.webp",
+      alt: "A bowl of golden crispy vegetable nuggets with millet filling",
+    },
     items: [
       veg("Crispy Veg Nugget"),
       veg("Chilli Cheese Toast"),
@@ -103,6 +111,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Millet Pasta",
     kicker: "The feel-good twirl",
     tone: "green",
+    image: {
+      src: "/menu-assets/millet-pasta.webp",
+      alt: "Penne millet pasta with roasted tomatoes, basil and vegetables",
+    },
     items: [
       veg("Moringa Pasta"),
       veg("Blue Pea Pasta"),
@@ -120,6 +132,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Nachos",
     kicker: "A loud little snack",
     tone: "yellow",
+    image: {
+      src: "/menu-assets/nachos.webp",
+      alt: "Loaded Kodo nachos with cheese, salsa, jalapeño and vegetables",
+    },
     items: [
       veg("Mexican Paneer Nachos"),
       nonVeg("Mexican Chicken Nachos"),
@@ -149,6 +165,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Soup",
     kicker: "Smiles shared warm",
     tone: "cream",
+    image: {
+      src: "/menu-assets/pearl-millet-mushroom-soup.webp",
+      alt: "Creamy pearl millet mushroom soup with sautéed mushrooms and thyme",
+    },
     items: [
       veg("Buttered Garlic & Tomato Soup"),
       veg("Pearl Millet Mushroom Soup"),
@@ -160,6 +180,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Quick Brew",
     kicker: "A cup-sized reset",
     tone: "yellow",
+    image: {
+      src: "/menu-assets/quick-brew.webp",
+      alt: "Espresso and cappuccino beside a branded yellow Kodo coffee cup",
+    },
     items: [
       veg("Cappuccino"),
       veg("Espresso"),
@@ -177,6 +201,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Cold Coffee",
     kicker: "Smile, sip, repeat",
     tone: "green",
+    image: {
+      src: "/menu-assets/cold-coffee.webp",
+      alt: "Iced cold coffee beside a branded yellow Kodo takeaway cup",
+    },
     items: [
       veg("Mocha"),
       veg("Strawberry Mocha"),
@@ -200,6 +228,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Tea",
     kicker: "Slow sips, bright days",
     tone: "orange",
+    image: {
+      src: "/menu-assets/tea.webp",
+      alt: "Cardamom tea and fresh lime green tea with a branded Kodo cup",
+    },
     items: [
       veg("Lime Tea"),
       veg("Green Tea"),
@@ -213,6 +245,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Quick Sip",
     kicker: "Fresh mocktails",
     tone: "pink",
+    image: {
+      src: "/menu-assets/quick-sip.webp",
+      alt: "Iced green apple mint mocktail beside a branded Kodo cup",
+    },
     items: [
       veg("Mint"),
       veg("Strawberry"),
@@ -226,6 +262,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Smileo",
     kicker: "Milkshakes with main-character energy",
     tone: "yellow",
+    image: {
+      src: "/menu-assets/smileo.webp",
+      alt: "Chocolate Oreo Smileo milkshake beside a branded Kodo cup",
+    },
     items: [
       veg("Chocolate Smileo"),
       veg("Malai Kulfi Smileo"),
@@ -239,6 +279,10 @@ export const menuCategories: MenuCategory[] = [
     title: "Hot Beverage",
     kicker: "Millet warmth in a mug",
     tone: "cream",
+    image: {
+      src: "/menu-assets/hot-beverage.webp",
+      alt: "Steaming ragi hot chocolate and millet malt with a branded Kodo cup",
+    },
     items: [veg("Millet Malt"), veg("Ragi Hot Chocolate")],
   },
 ];

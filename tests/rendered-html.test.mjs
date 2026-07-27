@@ -84,6 +84,23 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuData, /Steamed Chicken Burger/);
   assert.match(menuData, /Veg Momos Steamed/);
   assert.match(menuData, /Ragi Hot Chocolate/);
+  for (const asset of [
+    "kodo-crust-pizza.webp",
+    "multi-millet-sandwich.webp",
+    "guilt-free-munchies.webp",
+    "millet-pasta.webp",
+    "nachos.webp",
+    "pearl-millet-mushroom-soup.webp",
+    "quick-brew.webp",
+    "cold-coffee.webp",
+    "tea.webp",
+    "quick-sip.webp",
+    "smileo.webp",
+    "hot-beverage.webp",
+  ]) {
+    assert.match(menuData, new RegExp(`/menu-assets/${asset}`));
+  }
+  assert.doesNotMatch(menuData, /sandwich[\s\S]*millet-wraps\.jpg/i);
   assert.doesNotMatch(`${menuPage}\n${menuData}`, /₹|\bprice\b/i);
   assert.match(menuCss, /perspective:\s*1600px/);
   assert.match(menuCss, /\.menu-card\s*\{[\s\S]*min-width:\s*0/);
