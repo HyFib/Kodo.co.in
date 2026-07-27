@@ -29,6 +29,7 @@ export default function MenuPage() {
             width={900}
             height={415}
             priority
+            unoptimized
           />
         </Link>
         <nav aria-label="Menu page navigation">
@@ -64,6 +65,7 @@ export default function MenuPage() {
                 alt=""
                 fill
                 priority
+                unoptimized
                 sizes="(max-width: 760px) 88vw, 48vw"
               />
               <span className="menu-hero-stamp">MILLET MADE ☺</span>
@@ -117,6 +119,7 @@ export default function MenuPage() {
                         src={category.image.src}
                         alt={category.image.alt}
                         fill
+                        unoptimized
                         sizes="(max-width: 760px) 88vw, 38vw"
                       />
                     </div>
@@ -176,6 +179,7 @@ export default function MenuPage() {
             alt="KODO"
             width={900}
             height={415}
+            unoptimized
           />
         </Link>
         <p>Millets. Health. Smiles.</p>

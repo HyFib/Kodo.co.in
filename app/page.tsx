@@ -182,6 +182,7 @@ export default function Home() {
             width={900}
             height={415}
             priority
+            unoptimized
           />
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
@@ -226,6 +227,7 @@ export default function Home() {
                 alt="A craveable Kodo millet burger"
                 fill
                 priority
+                unoptimized
                 sizes="(max-width: 760px) 92vw, 52vw"
               />
               <div className="hero-sticker" aria-hidden="true">
@@ -292,6 +294,7 @@ export default function Home() {
                       src={`/burger-layers/${layer.slug}.png`}
                       alt=""
                       fill
+                      unoptimized
                       sizes="(max-width: 760px) 94vw, (max-width: 1100px) 60vw, 48vw"
                     />
                   </div>
@@ -332,6 +335,7 @@ export default function Home() {
                     src={dish.image}
                     alt={dish.alt}
                     fill
+                    unoptimized
                     sizes="(max-width: 860px) 94vw, 56vw"
                   />
                 </figure>
@@ -355,6 +359,7 @@ export default function Home() {
                     src={dish.image}
                     alt={dish.alt}
                     fill
+                    unoptimized
                     sizes="92vw"
                   />
                 </div>
@@ -400,6 +405,7 @@ export default function Home() {
               alt="Kodo — The Millet Way, millets, health, smiles"
               width={900}
               height={900}
+              unoptimized
             />
           </div>
           <div className="manifesto-copy">
@@ -426,6 +432,7 @@ export default function Home() {
                 alt="Kodo in Tamil"
                 width={900}
                 height={405}
+                unoptimized
               />
             </div>
           </div>
@@ -439,6 +446,7 @@ export default function Home() {
             alt="KODO"
             width={900}
             height={415}
+            unoptimized
           />
         </a>
         <p>Millets. Health. Smiles.</p>
