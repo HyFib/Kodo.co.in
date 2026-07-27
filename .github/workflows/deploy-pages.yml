@@ -21,10 +21,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          # Node 24 ships npm 11, whose lockfile resolution matches the
-          # lockfile in this repo (npm 10 rejects it as out of sync).
           node-version: 24
           cache: npm
+      # Older npm builds a different ideal tree for the wasm32-wasi optional
+      # deps and rejects this lockfile; match the npm that generated it.
+      - run: npm install -g npm@11.6.2
       - run: npm ci
       - run: npm test
       - id: pages
