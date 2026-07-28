@@ -11,14 +11,10 @@ export const metadata: Metadata = {
     "Explore KODO burgers, pizzas, momos, millet pasta, munchies, coffee and more.",
 };
 
-const swiggyOrderUrl = process.env.NEXT_PUBLIC_SWIGGY_ORDER_URL;
-const safeSwiggyOrderUrl =
-  swiggyOrderUrl &&
-  /^https:\/\/(?:www\.)?swiggy\.com\//i.test(swiggyOrderUrl)
-    ? swiggyOrderUrl
-    : null;
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
+const zomatoOrderUrl =
+  "https://www.zomato.com/theni/kodo-1-theni-locality/order";
 
 export default function MenuPage() {
   return (
@@ -37,6 +33,7 @@ export default function MenuPage() {
         <nav aria-label="Menu page navigation">
           <Link href="/">Home</Link>
           <a href="#full-menu">Full menu</a>
+          <a href="#delivery">Order online</a>
         </nav>
         <a
           className="menu-order-mini"
@@ -160,33 +157,43 @@ export default function MenuPage() {
           </div>
         </section>
 
-        <section className="swiggy-panel" id="swiggy">
-          <div>
-            <p className="menu-eyebrow">DELIVERY, NEXT</p>
-            <h2>Send the millet way to your doorway.</h2>
+        <section className="delivery-panel" id="delivery">
+          <div className="delivery-copy">
+            <p className="menu-eyebrow">DELIVERY PARTNERS</p>
+            <h2>Your happy meal, delivered.</h2>
             <p>
-              The ordering connection is ready for KODO&apos;s official Swiggy
-              restaurant link.
+              Order KODO directly on Zomato. Swiggy and Zaaroz connections are
+              reserved for their official restaurant links.
             </p>
           </div>
-          {safeSwiggyOrderUrl ? (
+          <div className="delivery-partners" aria-label="Delivery partners">
             <a
-              className="swiggy-button"
-              href={safeSwiggyOrderUrl}
+              className="delivery-option delivery-option-zomato"
+              href={zomatoOrderUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label="Order KODO on Zomato"
             >
-              Open KODO on Swiggy <span aria-hidden="true">↗</span>
+              <span>Zomato</span>
+              <strong>Order now <span aria-hidden="true">↗</span></strong>
             </a>
-          ) : (
             <button
-              className="swiggy-button swiggy-button-placeholder"
+              className="delivery-option delivery-option-placeholder"
               type="button"
               disabled
             >
-              Swiggy link coming soon
+              <span>Swiggy</span>
+              <strong>Coming soon</strong>
             </button>
-          )}
+            <button
+              className="delivery-option delivery-option-placeholder"
+              type="button"
+              disabled
+            >
+              <span>Zaaroz</span>
+              <strong>Coming soon</strong>
+            </button>
+          </div>
         </section>
       </main>
 

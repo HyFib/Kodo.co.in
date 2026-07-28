@@ -78,6 +78,8 @@ const dishes = [
 
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
+const zomatoOrderUrl =
+  "https://www.zomato.com/theni/kodo-1-theni-locality/order";
 
 export default function Home() {
   const [activeDish, setActiveDish] = useState(0);
@@ -223,6 +225,16 @@ export default function Home() {
             <div className="hero-actions">
               <a className="button button-dark" href="/menu">
                 See the full menu
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                className="button button-zomato"
+                href={zomatoOrderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Order KODO on Zomato"
+              >
+                Order on Zomato
                 <span aria-hidden="true">↗</span>
               </a>
               <span className="tiny-note">0% Guilt · 100% Smiles</span>

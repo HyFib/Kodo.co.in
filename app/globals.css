@@ -193,6 +193,7 @@ p {
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 22px;
   margin-top: 30px;
@@ -217,6 +218,12 @@ p {
 .button-dark {
   background: var(--ink);
   color: var(--yellow);
+}
+
+.button-zomato {
+  border: 2px solid var(--cream);
+  background: #e23744;
+  color: #fff;
 }
 
 .tiny-note {

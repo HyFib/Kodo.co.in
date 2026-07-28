@@ -39,6 +39,7 @@ test("server-renders the KODO experience", async () => {
   assert.match(html, /The Grainfather/);
   assert.match(html, /Smiling Momo-ments/);
   assert.match(html, /Smilin’ Wraps/);
+  assert.match(html, /Order on Zomato/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
@@ -68,6 +69,11 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   );
   assert.match(page, /destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8/);
   assert.match(page, />\s*Get directions\s*</);
+  assert.match(
+    page,
+    /https:\/\/www\.zomato\.com\/theni\/kodo-1-theni-locality\/order/,
+  );
+  assert.match(page, /aria-label="Order KODO on Zomato"/);
   assert.match(page, /rel="noopener noreferrer"/);
   assert.match(page, /millet-burger\.jpg/);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);
@@ -86,8 +92,16 @@ test("includes a dedicated price-free menu experience", async () => {
   ]);
 
   assert.match(menuPage, /KODO Menu — The Millet Way/);
-  assert.match(menuPage, /NEXT_PUBLIC_SWIGGY_ORDER_URL/);
-  assert.match(menuPage, /Swiggy link coming soon/);
+  assert.match(menuPage, /Swiggy/);
+  assert.match(menuPage, /Zaaroz/);
+  assert.match(menuPage, /Coming soon/);
+  assert.doesNotMatch(menuPage, /NEXT_PUBLIC_SWIGGY_ORDER_URL/);
+  assert.match(
+    menuPage,
+    /https:\/\/www\.zomato\.com\/theni\/kodo-1-theni-locality\/order/,
+  );
+  assert.match(menuPage, /aria-label="Order KODO on Zomato"/);
+  assert.match(menuPage, /rel="noopener noreferrer"/);
   assert.match(
     menuPage,
     /https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=10\.0524652%2C77\.5044701/,
@@ -138,6 +152,9 @@ test("server-renders the dedicated menu route", async () => {
   assert.match(html, /Pick your/);
   assert.match(html, /Kodo Crust Pizza/);
   assert.match(html, /Soft Momo-ments/);
-  assert.match(html, /Swiggy link coming soon/);
+  assert.match(html, /Zomato/);
+  assert.match(html, /Swiggy/);
+  assert.match(html, /Zaaroz/);
+  assert.match(html, /Coming soon/);
   assert.doesNotMatch(html, /₹/);
 });

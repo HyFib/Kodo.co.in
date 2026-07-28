@@ -142,7 +142,7 @@
 }
 
 .menu-primary-button,
-.swiggy-button {
+.delivery-option {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -474,11 +474,11 @@
   color: #f22f27;
 }
 
-.swiggy-panel {
+.delivery-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
   gap: 50px;
-  align-items: end;
+  align-items: center;
   min-height: 70svh;
   padding: clamp(80px, 10vw, 150px) clamp(20px, 6vw, 95px);
   overflow: hidden;
@@ -488,7 +488,7 @@
   color: var(--menu-yellow);
 }
 
-.swiggy-panel h2 {
+.delivery-panel h2 {
   max-width: 1050px;
   margin: 0;
   font-size: clamp(3.5rem, 8vw, 9rem);
@@ -496,7 +496,7 @@
   line-height: 0.82;
 }
 
-.swiggy-panel div > p:last-child {
+.delivery-copy > p:last-child {
   max-width: 580px;
   margin: 30px 0 0;
   color: var(--menu-cream);
@@ -505,14 +505,37 @@
   line-height: 1.5;
 }
 
-.swiggy-button {
-  flex: 0 0 auto;
-  min-width: 230px;
+.delivery-partners {
+  display: grid;
+  gap: 14px;
 }
 
-.swiggy-button-placeholder {
+.delivery-option {
+  justify-content: space-between;
+  width: 100%;
+  min-height: 76px;
+  padding: 0 24px;
+}
+
+.delivery-option > span {
+  font-size: 1.05rem;
+}
+
+.delivery-option strong {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.delivery-option-zomato {
+  background: #e23744;
+  color: #fff;
+}
+
+.delivery-option-placeholder {
+  border: 2px solid rgb(255 240 0 / 0.46);
+  background: rgb(8 63 41 / 0.38);
   cursor: not-allowed;
-  opacity: 0.64;
+  opacity: 0.72;
 }
 
 .menu-footer {
@@ -539,7 +562,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .menu-primary-button:hover,
-  .swiggy-button:not(:disabled):hover {
+  .delivery-option:not(:disabled):hover {
     transform: translateY(-4px) rotate(-1deg);
   }
 
@@ -713,18 +736,18 @@
     font-size: 0.94rem;
   }
 
-  .swiggy-panel {
+  .delivery-panel {
     grid-template-columns: 1fr;
     align-items: start;
     min-height: 75svh;
     padding-inline: 18px;
   }
 
-  .swiggy-panel h2 {
+  .delivery-panel h2 {
     font-size: clamp(3.5rem, 17vw, 6.2rem);
   }
 
-  .swiggy-button {
+  .delivery-partners {
     width: 100%;
   }
 
@@ -754,7 +777,7 @@
 
   .menu-card-face,
   .menu-primary-button,
-  .swiggy-button {
+  .delivery-option {
     transition: none;
   }
 }
