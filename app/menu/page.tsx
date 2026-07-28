@@ -17,6 +17,8 @@ const safeSwiggyOrderUrl =
   /^https:\/\/(?:www\.)?swiggy\.com\//i.test(swiggyOrderUrl)
     ? swiggyOrderUrl
     : null;
+const directionsUrl =
+  "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
 
 export default function MenuPage() {
   return (
@@ -36,8 +38,14 @@ export default function MenuPage() {
           <Link href="/">Home</Link>
           <a href="#full-menu">Full menu</a>
         </nav>
-        <a className="menu-order-mini" href="#swiggy">
-          Order soon <span aria-hidden="true">↗</span>
+        <a
+          className="menu-order-mini"
+          href={directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get directions to KODO in Google Maps"
+        >
+          Get directions <span aria-hidden="true">↗</span>
         </a>
       </header>
 

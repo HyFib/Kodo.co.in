@@ -76,6 +76,9 @@ const dishes = [
   },
 ] as const;
 
+const directionsUrl =
+  "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
+
 export default function Home() {
   const [activeDish, setActiveDish] = useState(0);
   const burgerBuildRef = useRef<HTMLElement>(null);
@@ -189,8 +192,14 @@ export default function Home() {
           <a href="/menu">Full menu</a>
           <a href="#millet-way">The millet way</a>
         </nav>
-        <a className="nav-cta" href="#visit">
-          Find your smile
+        <a
+          className="nav-cta"
+          href={directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get directions to KODO in Google Maps"
+        >
+          Get directions
           <span aria-hidden="true">↗</span>
         </a>
       </header>
@@ -432,7 +441,18 @@ export default function Home() {
           <p className="eyebrow">THENI, TAMIL NADU</p>
           <h2>Pull up a chair.</h2>
           <div className="visit-bottom">
-            <p>Quick bites. Big millet energy. Smiles served all day.</p>
+            <div className="visit-copy">
+              <p>Quick bites. Big millet energy. Smiles served all day.</p>
+              <a
+                className="directions-button"
+                href={directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get directions
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
             <div className="tamil-mark">
               <Image
                 src="/brand/kodo-tamil.png"

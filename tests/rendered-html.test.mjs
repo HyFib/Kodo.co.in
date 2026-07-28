@@ -62,6 +62,13 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   assert.match(page, /data-burger-layer/);
   assert.match(page, /burger-layers\/\$\{layer\.slug\}\.png/);
   assert.match(page, /aria-label="Primary navigation"/);
+  assert.match(
+    page,
+    /https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=10\.0524652%2C77\.5044701/,
+  );
+  assert.match(page, /destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8/);
+  assert.match(page, />\s*Get directions\s*</);
+  assert.match(page, /rel="noopener noreferrer"/);
   assert.match(page, /millet-burger\.jpg/);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);
   assert.match(layout, /viewportFit:\s*"cover"/);
@@ -81,6 +88,13 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuPage, /KODO Menu — The Millet Way/);
   assert.match(menuPage, /NEXT_PUBLIC_SWIGGY_ORDER_URL/);
   assert.match(menuPage, /Swiggy link coming soon/);
+  assert.match(
+    menuPage,
+    /https:\/\/www\.google\.com\/maps\/dir\/\?api=1&destination=10\.0524652%2C77\.5044701/,
+  );
+  assert.match(menuPage, /destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8/);
+  assert.match(menuPage, />\s*Get directions/);
+  assert.match(menuPage, /rel="noopener noreferrer"/);
   assert.match(menuData, /Steamed Chicken Burger/);
   assert.match(menuData, /Veg Momos Steamed/);
   assert.match(menuData, /Ragi Hot Chocolate/);
