@@ -80,6 +80,7 @@ const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
 const zomatoOrderUrl =
   "https://www.zomato.com/theni/kodo-1-theni-locality/order";
+const restaurantPhone = "+91 95007 38381";
 
 export default function Home() {
   const [activeDish, setActiveDish] = useState(0);
@@ -381,6 +382,8 @@ export default function Home() {
                 className={`dish-step ${activeDish === index ? "is-active" : ""}`}
                 data-dish-index={index}
                 key={dish.name}
+                onMouseEnter={() => setActiveDish(index)}
+                onFocusCapture={() => setActiveDish(index)}
               >
                 <div className="step-thumb">
                   <Image
@@ -399,6 +402,15 @@ export default function Home() {
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
+                <button
+                  className="dish-selector"
+                  type="button"
+                  aria-pressed={activeDish === index}
+                  onClick={() => setActiveDish(index)}
+                >
+                  {activeDish === index ? "Now showing" : "Show this dish"}
+                  <span aria-hidden="true">↗</span>
+                </button>
               </article>
             ))}
           </div>
@@ -478,18 +490,48 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <a className="footer-brand" href="#home" aria-label="Back to top">
-          <Image
-            src="/brand/kodo-wordmark.png"
-            alt="KODO"
-            width={900}
-            height={415}
-            unoptimized
-          />
-        </a>
-        <p>Millets. Health. Smiles.</p>
-        <a href="#home">Back to top ↑</a>
+      <footer className="site-footer">
+        <div className="footer-identity">
+          <a className="footer-brand" href="#home" aria-label="Back to top">
+            <Image
+              src="/brand/kodo-wordmark.png"
+              alt="KODO"
+              width={900}
+              height={415}
+              unoptimized
+            />
+          </a>
+          <p>Millets. Health. Smiles.</p>
+        </div>
+
+        <div className="footer-contact">
+          <p className="footer-label">KODO QUICK BITES · THENI</p>
+          <address>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open KODO Quick Bites location in Google Maps"
+            >
+              D-156H/7W, Deepan Mills Complex, Kumli Bypass Junction,
+              Periyakulam Main Road, Vadapudhupatty, Theni 625531
+            </a>
+          </address>
+          <a className="footer-phone" href="tel:+919500738381">
+            {restaurantPhone}
+          </a>
+        </div>
+
+        <div className="footer-actions">
+          <a
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Directions ↗
+          </a>
+          <a href="#home">Back to top ↑</a>
+        </div>
       </footer>
     </div>
   );

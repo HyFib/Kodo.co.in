@@ -39,6 +39,10 @@ test("server-renders the KODO experience", async () => {
   assert.match(html, /The Grainfather/);
   assert.match(html, /Smiling Momo-ments/);
   assert.match(html, /Smilin’ Wraps/);
+  assert.match(html, /Now showing/);
+  assert.match(html, /KODO QUICK BITES · THENI/);
+  assert.match(html, /Deepan Mills Complex/);
+  assert.match(html, /\+91 95007 38381/);
   assert.match(html, /Order on Zomato/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
@@ -74,7 +78,14 @@ test("keeps KODO motion accessible and the starter removed", async () => {
     /https:\/\/www\.zomato\.com\/theni\/kodo-1-theni-locality\/order/,
   );
   assert.match(page, /aria-label="Order KODO on Zomato"/);
+  assert.match(page, /onMouseEnter=\{\(\) => setActiveDish\(index\)\}/);
+  assert.match(page, /aria-pressed=\{activeDish === index\}/);
+  assert.match(page, /href="tel:\+919500738381"/);
+  assert.match(page, /D-156H\/7W, Deepan Mills Complex/);
   assert.match(page, /rel="noopener noreferrer"/);
+  assert.match(css, /\.menu-intro\s*\{[\s\S]*min-height:\s*100svh/);
+  assert.match(css, /\.dish-selector\s*\{[\s\S]*min-height:\s*48px/);
+  assert.match(css, /\.site-footer\s*\{[\s\S]*min-height:\s*250px/);
   assert.match(page, /millet-burger\.jpg/);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);
   assert.match(layout, /viewportFit:\s*"cover"/);
