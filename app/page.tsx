@@ -403,15 +403,26 @@ export default function Home() {
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
-                <button
-                  className="dish-selector"
-                  type="button"
-                  aria-pressed={activeDish === index}
-                  onClick={() => setActiveDish(index)}
-                >
-                  {activeDish === index ? "Now showing" : "Show this dish"}
-                  <span aria-hidden="true">↗</span>
-                </button>
+                {activeDish === index ? (
+                  <a
+                    className="dish-selector dish-selector-current"
+                    href="/menu"
+                    aria-label={`View the full menu from ${dish.name}`}
+                  >
+                    Now showing · Full menu
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <button
+                    className="dish-selector"
+                    type="button"
+                    aria-pressed="false"
+                    onClick={() => setActiveDish(index)}
+                  >
+                    Show this dish
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                )}
               </article>
             ))}
           </div>

@@ -726,7 +726,7 @@ p {
     transform 180ms ease;
 }
 
-.dish-selector[aria-pressed="true"] {
+.dish-selector-current {
   background: var(--green);
   color: var(--cream);
 }

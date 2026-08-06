@@ -39,7 +39,11 @@ test("server-renders the KODO experience", async () => {
   assert.match(html, /The Grainfather/);
   assert.match(html, /Smiling Momo-ments/);
   assert.match(html, /Smilin’ Wraps/);
-  assert.match(html, /Now showing/);
+  assert.match(html, /Now showing · Full menu/);
+  assert.match(
+    html,
+    /<a[^>]*class="dish-selector dish-selector-current"[^>]*href="\/menu"/,
+  );
   assert.match(html, /KODO QUICK BITES · THENI/);
   assert.match(html, /Deepan Mills Complex/);
   assert.match(html, /\+91 95007 38381/);
@@ -80,7 +84,9 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   );
   assert.match(page, /aria-label="Order KODO on Zomato"/);
   assert.match(page, /onMouseEnter=\{\(\) => setActiveDish\(index\)\}/);
-  assert.match(page, /aria-pressed=\{activeDish === index\}/);
+  assert.match(page, /className="dish-selector dish-selector-current"/);
+  assert.match(page, /href="\/menu"/);
+  assert.match(page, /aria-pressed="false"/);
   assert.match(page, /href="tel:\+919500738381"/);
   assert.match(page, /D-156H\/7W, Deepan Mills Complex/);
   assert.match(page, /rel="noopener noreferrer"/);
