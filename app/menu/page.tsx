@@ -15,7 +15,7 @@ const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
 const zomatoOrderUrl =
   "https://www.zomato.com/theni/kodo-1-theni-locality/order";
-const restaurantPhone = "+91 95007 38381";
+const restaurantPhone = "+91 90431 27006";
 
 export default function MenuPage() {
   return (
@@ -234,7 +234,7 @@ export default function MenuPage() {
               Periyakulam Main Road, Vadapudhupatty, Theni 625531
             </a>
           </address>
-          <a className="menu-footer-phone" href="tel:+919500738381">
+          <a className="menu-footer-phone" href="tel:+919043127006">
             {restaurantPhone}
           </a>
         </div>
