@@ -44,6 +44,7 @@ test("server-renders the KODO experience", async () => {
   assert.match(html, /Deepan Mills Complex/);
   assert.match(html, /\+91 95007 38381/);
   assert.match(html, /Order on Zomato/);
+  assert.match(html, /Quick Bites Restaurant/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
@@ -87,6 +88,7 @@ test("keeps KODO motion accessible and the starter removed", async () => {
   assert.match(css, /\.dish-selector\s*\{[\s\S]*min-height:\s*48px/);
   assert.match(css, /\.site-footer\s*\{[\s\S]*min-height:\s*250px/);
   assert.match(page, /millet-burger\.jpg/);
+  assert.equal((page.match(/Quick Bites Restaurant/g) ?? []).length, 2);
   assert.match(layout, /title:\s*"KODO — Food that smiles back"/);
   assert.match(layout, /viewportFit:\s*"cover"/);
   assert.doesNotMatch(
@@ -106,12 +108,16 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuPage, /Swiggy/);
   assert.match(menuPage, /Zaaroz/);
   assert.match(menuPage, /Coming soon/);
+  assert.equal((menuPage.match(/Quick Bites Restaurant/g) ?? []).length, 2);
   assert.doesNotMatch(menuPage, /NEXT_PUBLIC_SWIGGY_ORDER_URL/);
   assert.match(
     menuPage,
     /https:\/\/www\.zomato\.com\/theni\/kodo-1-theni-locality\/order/,
   );
   assert.match(menuPage, /aria-label="Order KODO on Zomato"/);
+  assert.match(menuPage, /className="hero-delivery" id="delivery"/);
+  assert.match(menuPage, /className="hero-menu-filter"/);
+  assert.doesNotMatch(menuPage, /className="delivery-panel"/);
   assert.match(menuPage, /rel="noopener noreferrer"/);
   assert.match(
     menuPage,
@@ -151,6 +157,14 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuCss, /@media \(max-width:\s*760px\)/);
   assert.match(menuCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)/);
   assert.match(menuCss, /\.category-rail a[\s\S]*min-height:\s*44px/);
+  assert.match(
+    menuCss,
+    /\.hero-delivery-partners\s*\{[\s\S]*grid-template-columns:\s*repeat\(3/,
+  );
+  assert.match(
+    menuCss,
+    /@media \(max-width:\s*760px\)[\s\S]*\.hero-delivery-partners\s*\{[\s\S]*grid-template-columns:\s*1fr/,
+  );
   assert.match(menuCss, /safe-area-inset-bottom/);
 });
 

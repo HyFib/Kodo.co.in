@@ -190,6 +190,7 @@ export default function Home() {
             priority
             unoptimized
           />
+          <span className="brand-tagline">Quick Bites Restaurant</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
           <a href="/menu">Full menu</a>
@@ -500,6 +501,7 @@ export default function Home() {
               height={415}
               unoptimized
             />
+            <span className="brand-tagline">Quick Bites Restaurant</span>
           </a>
           <p>Millets. Health. Smiles.</p>
         </div>

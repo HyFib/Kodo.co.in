@@ -29,6 +29,7 @@ export default function MenuPage() {
             priority
             unoptimized
           />
+          <span className="brand-tagline">Quick Bites Restaurant</span>
         </Link>
         <nav aria-label="Menu page navigation">
           <Link href="/">Home</Link>
@@ -61,6 +62,44 @@ export default function MenuPage() {
             <a className="menu-primary-button" href="#full-menu">
               Explore the menu <span aria-hidden="true">↓</span>
             </a>
+
+            <div className="hero-delivery" id="delivery">
+              <div className="hero-delivery-heading">
+                <span>Order online</span>
+                <small>Choose your delivery partner</small>
+              </div>
+              <div
+                className="hero-delivery-partners"
+                aria-label="Delivery partners"
+              >
+                <a
+                  className="hero-delivery-option hero-delivery-zomato"
+                  href={zomatoOrderUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Order KODO on Zomato"
+                >
+                  <strong>Zomato</strong>
+                  <span>Order now ↗</span>
+                </a>
+                <button
+                  className="hero-delivery-option hero-delivery-placeholder"
+                  type="button"
+                  disabled
+                >
+                  <strong>Swiggy</strong>
+                  <span>Coming soon</span>
+                </button>
+                <button
+                  className="hero-delivery-option hero-delivery-placeholder"
+                  type="button"
+                  disabled
+                >
+                  <strong>Zaaroz</strong>
+                  <span>Coming soon</span>
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="menu-hero-object" aria-hidden="true">
@@ -87,15 +126,21 @@ export default function MenuPage() {
             </div>
             <div className="menu-hero-shadow" />
           </div>
-        </section>
 
-        <nav className="category-rail" aria-label="Menu categories">
-          {menuCategories.map((category) => (
-            <a href={`#${category.id}`} key={category.id}>
-              {category.title}
-            </a>
-          ))}
-        </nav>
+          <div className="hero-menu-filter">
+            <div className="hero-menu-filter-copy">
+              <strong>Filter the menu</strong>
+              <span>Tap a category to jump straight to it</span>
+            </div>
+            <nav className="category-rail" aria-label="Menu categories">
+              {menuCategories.map((category) => (
+                <a href={`#${category.id}`} key={category.id}>
+                  {category.title}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </section>
 
         <section className="menu-section" id="full-menu">
           <div className="menu-section-heading">
@@ -157,44 +202,6 @@ export default function MenuPage() {
           </div>
         </section>
 
-        <section className="delivery-panel" id="delivery">
-          <div className="delivery-copy">
-            <p className="menu-eyebrow">DELIVERY PARTNERS</p>
-            <h2>Your happy meal, delivered.</h2>
-            <p>
-              Order KODO directly on Zomato. Swiggy and Zaaroz connections are
-              reserved for their official restaurant links.
-            </p>
-          </div>
-          <div className="delivery-partners" aria-label="Delivery partners">
-            <a
-              className="delivery-option delivery-option-zomato"
-              href={zomatoOrderUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Order KODO on Zomato"
-            >
-              <span>Zomato</span>
-              <strong>Order now <span aria-hidden="true">↗</span></strong>
-            </a>
-            <button
-              className="delivery-option delivery-option-placeholder"
-              type="button"
-              disabled
-            >
-              <span>Swiggy</span>
-              <strong>Coming soon</strong>
-            </button>
-            <button
-              className="delivery-option delivery-option-placeholder"
-              type="button"
-              disabled
-            >
-              <span>Zaaroz</span>
-              <strong>Coming soon</strong>
-            </button>
-          </div>
-        </section>
       </main>
 
       <footer className="menu-footer">
@@ -206,6 +213,7 @@ export default function MenuPage() {
             height={415}
             unoptimized
           />
+          <span className="brand-tagline">Quick Bites Restaurant</span>
         </Link>
         <p>Millets. Health. Smiles.</p>
         <a href="#top">Back to top ↑</a>
