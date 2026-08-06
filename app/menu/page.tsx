@@ -15,6 +15,7 @@ const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=10.0524652%2C77.5044701&destination_place_id=ChIJxTIlrRdrBzsRmV-tWszPlH8&travelmode=driving";
 const zomatoOrderUrl =
   "https://www.zomato.com/theni/kodo-1-theni-locality/order";
+const restaurantPhone = "+91 95007 38381";
 
 export default function MenuPage() {
   return (
@@ -127,20 +128,21 @@ export default function MenuPage() {
             <div className="menu-hero-shadow" />
           </div>
 
-          <div className="hero-menu-filter">
-            <div className="hero-menu-filter-copy">
-              <strong>Filter the menu</strong>
-              <span>Tap a category to jump straight to it</span>
-            </div>
-            <nav className="category-rail" aria-label="Menu categories">
-              {menuCategories.map((category) => (
-                <a href={`#${category.id}`} key={category.id}>
-                  {category.title}
-                </a>
-              ))}
-            </nav>
-          </div>
         </section>
+
+        <div className="hero-menu-filter">
+          <div className="hero-menu-filter-copy">
+            <strong>Filter the menu</strong>
+            <span>Tap a category to jump straight to it</span>
+          </div>
+          <nav className="category-rail" aria-label="Menu categories">
+            {menuCategories.map((category) => (
+              <a href={`#${category.id}`} key={category.id}>
+                {category.title}
+              </a>
+            ))}
+          </nav>
+        </div>
 
         <section className="menu-section" id="full-menu">
           <div className="menu-section-heading">
@@ -205,18 +207,49 @@ export default function MenuPage() {
       </main>
 
       <footer className="menu-footer">
-        <Link className="menu-brand" href="/" aria-label="KODO home">
-          <Image
-            src="/brand/kodo-wordmark.png"
-            alt="KODO"
-            width={900}
-            height={415}
-            unoptimized
-          />
-          <span className="brand-tagline">Quick Bites Restaurant</span>
-        </Link>
-        <p>Millets. Health. Smiles.</p>
-        <a href="#top">Back to top ↑</a>
+        <div className="menu-footer-identity">
+          <Link className="menu-brand" href="/" aria-label="KODO home">
+            <Image
+              src="/brand/kodo-wordmark.png"
+              alt="KODO"
+              width={900}
+              height={415}
+              unoptimized
+            />
+            <span className="brand-tagline">Quick Bites Restaurant</span>
+          </Link>
+          <p>Millets. Health. Smiles.</p>
+        </div>
+
+        <div className="menu-footer-store">
+          <p className="menu-footer-label">Store locator · KODO Theni</p>
+          <address>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open KODO Quick Bites store location in Google Maps"
+            >
+              D-156H/7W, Deepan Mills Complex, Kumli Bypass Junction,
+              Periyakulam Main Road, Vadapudhupatty, Theni 625531
+            </a>
+          </address>
+          <a className="menu-footer-phone" href="tel:+919500738381">
+            {restaurantPhone}
+          </a>
+        </div>
+
+        <div className="menu-footer-actions">
+          <a
+            className="menu-footer-directions"
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Get directions ↗
+          </a>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </footer>
     </div>
   );

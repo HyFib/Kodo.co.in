@@ -7,7 +7,7 @@
   --menu-pink: #ed98cb;
   width: 100%;
   overflow-x: hidden;
-  overflow: clip;
+  overflow-x: clip;
   background: var(--menu-cream);
   color: #083f29;
 }
@@ -76,7 +76,7 @@
   gap: clamp(30px, 5vw, 80px);
   align-items: center;
   min-height: 100svh;
-  padding: 132px clamp(20px, 5vw, 80px) 42px;
+  padding: 132px clamp(20px, 5vw, 80px) 118px;
   background:
     radial-gradient(circle at 82% 28%, rgb(255 240 0 / 0.2), transparent 24%),
     var(--menu-green);
@@ -312,15 +312,15 @@
 }
 
 .hero-menu-filter {
-  position: relative;
-  z-index: 6;
-  grid-column: 1 / -1;
+  position: sticky;
+  z-index: 50;
+  top: 0;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 24px;
   align-items: center;
   min-width: 0;
-  margin-top: 18px;
+  margin: -98px clamp(20px, 5vw, 80px) 0;
   padding: 15px 17px 15px 22px;
   border: 2px solid #083f29;
   border-radius: 26px;
@@ -381,6 +381,7 @@
 }
 
 .menu-section {
+  scroll-margin-top: 105px;
   padding: clamp(90px, 10vw, 150px) clamp(18px, 5vw, 80px);
 }
 
@@ -427,7 +428,7 @@
   grid-column: span 6;
   min-width: 0;
   max-width: 100%;
-  scroll-margin-top: 88px;
+  scroll-margin-top: 105px;
   transform-style: preserve-3d;
 }
 
@@ -590,11 +591,11 @@
 
 .menu-footer {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 28px;
-  min-height: 128px;
-  padding: 28px clamp(20px, 4vw, 64px);
+  grid-template-columns: minmax(150px, 0.65fr) minmax(300px, 1.45fr) auto;
+  align-items: start;
+  gap: clamp(34px, 6vw, 100px);
+  min-height: 250px;
+  padding: 54px clamp(20px, 4vw, 64px);
   background: var(--menu-deep-green);
   color: var(--menu-yellow);
   font-size: 0.72rem;
@@ -606,14 +607,71 @@
   margin: 0;
 }
 
-.menu-footer > a:last-child {
-  justify-self: end;
+.menu-footer-identity {
+  display: grid;
+  gap: 18px;
+}
+
+.menu-footer-identity > p {
+  max-width: 150px;
+  line-height: 1.5;
+}
+
+.menu-footer-store {
+  display: grid;
+  gap: 13px;
+  max-width: 620px;
+}
+
+.menu-footer-label {
+  color: var(--menu-cream);
+  font-weight: 800;
+}
+
+.menu-footer-store address {
+  margin: 0;
+  color: var(--menu-cream);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.9rem, 1.25vw, 1.08rem);
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.55;
+  text-transform: none;
+}
+
+.menu-footer-phone {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 44px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.menu-footer-actions {
+  display: grid;
+  justify-items: end;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.menu-footer-directions {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .menu-primary-button:hover,
   .hero-delivery-option:not(:disabled):hover {
     transform: translateY(-4px) rotate(-1deg);
+  }
+
+  .menu-footer a:hover {
+    opacity: 0.68;
   }
 
   .category-rail a:hover {
@@ -701,7 +759,7 @@
     min-height: auto;
     padding:
       max(116px, calc(92px + env(safe-area-inset-top)))
-      max(18px, env(safe-area-inset-right)) 62px
+      max(18px, env(safe-area-inset-right)) 190px
       max(18px, env(safe-area-inset-left));
   }
 
@@ -760,7 +818,8 @@
   }
 
   .hero-menu-filter {
-    margin-top: 4px;
+    margin: -170px max(14px, env(safe-area-inset-right)) 0
+      max(14px, env(safe-area-inset-left));
     padding: 16px;
     border-radius: 22px;
     box-shadow: 7px 8px 0 rgb(8 63 41 / 0.75);
@@ -771,6 +830,7 @@
   }
 
   .menu-section {
+    scroll-margin-top: 180px;
     padding-right: 26px;
     padding-left: 16px;
   }
@@ -796,6 +856,7 @@
 
   .menu-card {
     grid-column: auto;
+    scroll-margin-top: 180px;
   }
 
   .menu-card-face {
@@ -820,21 +881,27 @@
   }
 
   .menu-footer {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 32px;
     padding:
-      28px max(18px, env(safe-area-inset-right))
-      max(28px, env(safe-area-inset-bottom))
+      44px max(18px, env(safe-area-inset-right))
+      max(38px, env(safe-area-inset-bottom))
       max(18px, env(safe-area-inset-left));
   }
 
-  .menu-footer p {
-    display: none;
+  .menu-footer-store {
+    max-width: 520px;
   }
 
-  .menu-footer > a:last-child {
-    display: inline-flex;
+  .menu-footer-actions {
+    grid-template-columns: 1fr auto;
     align-items: center;
-    min-height: 44px;
+    justify-items: start;
+    width: 100%;
+  }
+
+  .menu-footer-actions > a:last-child {
+    justify-self: end;
   }
 }
 

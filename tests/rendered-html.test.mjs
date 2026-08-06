@@ -118,6 +118,9 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuPage, /className="hero-delivery" id="delivery"/);
   assert.match(menuPage, /className="hero-menu-filter"/);
   assert.doesNotMatch(menuPage, /className="delivery-panel"/);
+  assert.match(menuPage, /Store locator · KODO Theni/);
+  assert.match(menuPage, /href="tel:\+919500738381"/);
+  assert.match(menuPage, /D-156H\/7W, Deepan Mills Complex/);
   assert.match(menuPage, /rel="noopener noreferrer"/);
   assert.match(
     menuPage,
@@ -157,6 +160,11 @@ test("includes a dedicated price-free menu experience", async () => {
   assert.match(menuCss, /@media \(max-width:\s*760px\)/);
   assert.match(menuCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)/);
   assert.match(menuCss, /\.category-rail a[\s\S]*min-height:\s*44px/);
+  assert.match(
+    menuCss,
+    /\.hero-menu-filter\s*\{[\s\S]*position:\s*sticky;[\s\S]*top:\s*0/,
+  );
+  assert.match(menuCss, /\.menu-footer-store address/);
   assert.match(
     menuCss,
     /\.hero-delivery-partners\s*\{[\s\S]*grid-template-columns:\s*repeat\(3/,
